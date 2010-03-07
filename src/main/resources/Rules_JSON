@@ -1,0 +1,56 @@
+JSON Schema for SPO2:
+{
+  "id": "SPO2",
+  "description": "SPO2 Data",
+  "type": "object",
+  "properties": {
+    "type": {"type": "string"}, //maxLength/minLength/format?
+    "measurementType": {"type": "string"}, //maxLength/minLength/format?
+    "heartRate": {"type": "number", "minimum": 18, "maximum": 300}, // "per minute"?
+    "oxygenSaturationPercentage": {"type": "number", "minimum": 0, "maximum": 100},
+    "disconnected": {"type": "boolean"},
+    "outOfTrack": {"type": "boolean"},
+    "artifact": {"type": "boolean"},
+    "marginalPerfusion": {"type": "boolean"},
+    "lowPerfusion": {"type": "boolean"},
+    "fromValidSensor": {"type": "boolean"}
+  }
+}
+
+JSON Schema for Blood Glucose Monitor:
+{
+  "description": "Blood Glucose Monitor",
+  "type": "object",
+  "properties": {
+    "type": {"type": "string"}, //maxLength/minLength/format?
+    "measurementType": {"type": "string"}, //maxLength/minLength/format?
+    "bloodGlucose": {"type": "number"}, //maximum/minimum?
+    "disconnected": {"type": "boolean"},
+    "outOfTrack": {"type": "boolean"},
+    "artifact": {"type": "boolean"},
+    "marginalPerfusion": {"type": "boolean"},
+    "lowPerfusion": {"type": "boolean"},
+    "fromValidSensor": {"type": "boolean"}
+  }
+}
+====================
+SPO2 Alarm Condition
+{
+  "patient" : {
+    "heartRate": {"minimum": 60, "maximum": 90},
+    "oxygenSaturationPercentage": {"minimum": 90, "maximum": 100}
+  },
+  //"dvice: {
+  //  connected/battery (condition on remaining battery life?)/etc
+  //}
+}
+
+Blood Glucose Monitor Alarm Condition
+{
+  "patient" : {
+    "bllodGlucose": {"minimum": 70, "maximum": 140}
+  },
+  //"dvice: {
+  //  connected/battery (condition on remaining battery life?)/etc
+  //}
+}
