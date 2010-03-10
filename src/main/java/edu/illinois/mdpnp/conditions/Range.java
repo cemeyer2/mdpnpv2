@@ -5,6 +5,7 @@ package edu.illinois.mdpnp.conditions;
 
 import java.math.BigDecimal;
 
+import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
@@ -22,6 +23,7 @@ public class Range extends Condition{
 	@JsonProperty(value="value")
 	private BigDecimal value;
 
+	@JsonCreator
 	public Range(	@JsonProperty(value="value") BigDecimal value, 
 					@JsonProperty(value="minimum") BigDecimal minimum, 
 					@JsonProperty(value="maximum") BigDecimal maximum) {

@@ -1,5 +1,6 @@
 package edu.illinois.mdpnp.conditions;
 
+import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public abstract class BinaryCondition extends Condition {
@@ -9,6 +10,7 @@ public abstract class BinaryCondition extends Condition {
 	@JsonProperty(value="target")
 	protected Comparable target;
 	
+	@JsonCreator
 	public BinaryCondition(	@JsonProperty(value="source") Comparable source, 
 							@JsonProperty(value="target") Comparable target)
 	{
