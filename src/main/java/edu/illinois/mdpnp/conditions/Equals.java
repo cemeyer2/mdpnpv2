@@ -1,9 +1,17 @@
 package edu.illinois.mdpnp.conditions;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonProperty;
+
 public class Equals extends BinaryCondition {
 
-	public Equals(Comparable src, Comparable target) {
-		super(src, target);
+	@JsonCreator
+	public Equals(	@JsonProperty(value="source") Comparable source, 
+					@JsonProperty(value="target") Comparable target)
+	{
+		super(source, target);
+		this.source = source;
+		this.target = target;
 	}
 
 	@Override

@@ -21,10 +21,10 @@ public class DeserializerDriver
 		Condition condition = new LessThan(source, target);
 		AndCondition and = new AndCondition(condition, condition);
 		
-		String json = JSONSerializer.toJSON(and);
+		String json = JSONSerializer.toJSON(condition);
 		
-		AndCondition and2 = JSONDeserializer.fromJSON(json, AndCondition.class);
-		System.out.println(and2.evaluate());
+		LessThan deserialized = JSONDeserializer.fromJSON(json, LessThan.class);
+		System.out.println(deserialized.evaluate());
 	}
 
 }
