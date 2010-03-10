@@ -1,10 +1,18 @@
 package edu.illinois.mdpnp.conditions;
 
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonProperty;
+
 public class OrCondition extends Condition {
 
-	private Condition l, r;
+	@JsonProperty(value="left")
+	private Condition l;
+	@JsonProperty(value="right")
+	private Condition r;
 	
-	public OrCondition(Condition l, Condition r) {
+	@JsonCreator
+	public OrCondition(		@JsonProperty(value="left") Condition l, 
+							@JsonProperty(value="right") Condition r) {
 		this.l = l;
 		this.r = r;
 	}

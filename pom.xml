@@ -69,9 +69,32 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>org.slf4j</groupId>
-  		<artifactId>slf4j-nop</artifactId>
-  		<version>1.5.11</version>
+  		<groupId>org.codehaus.jackson</groupId>
+  		<artifactId>jackson-jaxrs</artifactId>
+  		<version>1.4.3</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.codehaus.jackson</groupId>
+  		<artifactId>jackson-xc</artifactId>
+  		<version>1.4.3</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.codehaus.jackson</groupId>
+  		<artifactId>jackson-core-lgpl</artifactId>
+  		<version>1.4.3</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.codehaus.jackson</groupId>
+  		<artifactId>jackson-mapper-lgpl</artifactId>
+  		<version>1.4.3</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
   	</dependency>
   </dependencies>
 </project>

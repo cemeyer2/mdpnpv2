@@ -1,16 +1,19 @@
 package edu.illinois.mdpnp.conditions;
 
-public class Equals extends Condition {
+public class Equals extends BinaryCondition {
 
-	private Comparable src, target;
 	public Equals(Comparable src, Comparable target) {
-		this.src = src;
-		this.target = target;
+		super(src, target);
 	}
 
 	@Override
 	public boolean evaluate() {
-		return src.compareTo(target) == 0;
+		return getSource().compareTo(getTarget()) == 0;
+	}
+
+	@Override
+	public String getOperator() {
+		return "==";
 	}
 
 }

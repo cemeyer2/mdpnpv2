@@ -12,10 +12,16 @@ public class CouchBTest {
 
 	    // create a hash map document with two fields    
 	    Map<String,String> doc = new HashMap<String, String>();
+	    //doc.put("_id", "testDoc");
 	    doc.put("foo", "value for the foo attribute");
 	    doc.put("bar", "value for the bar attribute");
 
 	    // create the document in couchdb
 	    db.createDocument(doc);
+	    
+	    doc.put("updated", "updated");
+	    db.createOrUpdateDocument(doc);
+	    
+	    //db.getDocument(cls, docId)
 	}
 }
