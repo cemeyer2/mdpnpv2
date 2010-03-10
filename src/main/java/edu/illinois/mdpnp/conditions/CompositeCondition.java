@@ -3,8 +3,16 @@ package edu.illinois.mdpnp.conditions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 public class CompositeCondition extends Condition {
 
+	public CompositeCondition(@JsonProperty(value="conditions") List<Condition> conditions)
+	{
+		this.conditions = conditions;
+	}
+	
+	@JsonProperty(value="conditions")
 	private List<Condition> conditions = new ArrayList<Condition>();
 	
 	public List<Condition> addCondition(Condition cond) {

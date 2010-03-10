@@ -1,27 +1,29 @@
 package edu.illinois.mdpnp.conditions;
 
-import org.svenson.JSONProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 public abstract class BinaryCondition extends Condition {
 
-	protected Comparable source, target;
+	@JsonProperty(value="source")
+	protected Comparable source;
+	@JsonProperty(value="target")
+	protected Comparable target;
 	
-	public BinaryCondition(Comparable source, Comparable target)
+	public BinaryCondition(	@JsonProperty(value="source") Comparable source, 
+							@JsonProperty(value="target") Comparable target)
 	{
 		this.source = source;
 		this.target = target;
 	}
 	
-	@JSONProperty(value="operator")
+	@JsonProperty(value="operator")
 	public abstract String getOperator();
 	
-	@JSONProperty(value="source")
 	public Comparable getSource()
 	{
 		return source;
 	}
 	
-	@JSONProperty(value="target")
 	public Comparable getTarget()
 	{
 		return target;
