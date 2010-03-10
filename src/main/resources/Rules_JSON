@@ -19,6 +19,7 @@ JSON Schema for SPO2:
 
 JSON Schema for Blood Glucose Monitor:
 {
+  "id": "blood_glucose",
   "description": "Blood Glucose Monitor",
   "type": "object",
   "properties": {
@@ -34,23 +35,24 @@ JSON Schema for Blood Glucose Monitor:
   }
 }
 ====================
-SPO2 Alarm Condition
+Preconditions
+- Checking preconditions that require a device to be connected and responding would not require a specific conditions.
+- Preconditions may check if all the devices required (perhaps specified by a clinician prior to procedure) are indeed detectable by the system?
+====================
+Hazard/Alarm Conditions - with SPO2 and Glucose Monitor plugged
 {
   "patient" : {
-    "heartRate": {"minimum": 60, "maximum": 90},
-    "oxygenSaturationPercentage": {"minimum": 90, "maximum": 100}
+    "heartRate": {"minimum": 60, "maximum": 90}, // "heartRate", "oxygenSaturation", etc = device properties
+    "oxygenSaturationPercentage": {"minimum": 90, "maximum": 100},
+    "bloodGlucose": {"minimum": 70, "maximum": 140}
   },
-  //"dvice: {
-  //  connected/battery (condition on remaining battery life?)/etc
-  //}
-}
-
-Blood Glucose Monitor Alarm Condition
-{
-  "patient" : {
-    "bllodGlucose": {"minimum": 70, "maximum": 140}
-  },
-  //"dvice: {
-  //  connected/battery (condition on remaining battery life?)/etc
-  //}
+  "devices": {
+    "SP02" : { // devices identified by their IDs
+      "battery": 0.5 // e.g. SPO2 device's battery needs to be more than 50% charged
+      //device failure/connectedness may not need specific values/states to compared against. 
+    },
+    "blood_glucose" : {
+      ...
+    }
+  }
 }
