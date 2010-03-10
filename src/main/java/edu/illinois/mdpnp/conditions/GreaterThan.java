@@ -1,16 +1,20 @@
 package edu.illinois.mdpnp.conditions;
 
-public class GreaterThan extends Condition {
+public class GreaterThan extends BinaryCondition {
 
-	private Comparable src, target;
+
 	public GreaterThan(Comparable src, Comparable target) {
-		this.src = src;
-		this.target = target;
+		super(src, target);
 	}
 
 	@Override
 	public boolean evaluate() {
-		return src.compareTo(target) > 0;
+		return getSource().compareTo(getTarget()) > 0;
+	}
+
+	@Override
+	public String getOperator() {
+		return ">";
 	}
 
 }
