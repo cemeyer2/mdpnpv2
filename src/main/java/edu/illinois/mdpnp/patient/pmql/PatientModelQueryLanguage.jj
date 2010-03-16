@@ -1,0 +1,83 @@
+/*
+ A simple javacc parser for a language to query the patient model, see pmql_definition.txt for examples
+ of what this parser will recogonize.
+
+ written by Charlie Meyer - March 2010
+*/
+
+options {
+	STATIC = false ;
+}
+
+PARSER_BEGIN(PatientModelQueryLanguage)
+package edu.illinois.mdpnp.patient.pmql;
+
+class PatientModelQueryLanguage
+{
+	public static void main( String[] args ) throws ParseException, TokenMgrError
+	{
+		PatientModelQueryLanguage parser = new PatientModelQueryLanguage( System.in );
+		parser.Start();
+	}
+}
+PARSER_END(PatientModelQueryLanguage)
+
+TOKEN:{  < NEWLINE : "\n" | "\r" | "\r\n" >
+}
+TOKEN:
+{
+  < SPACE : (" ")+ >
+}
+TOKEN:
+{
+  < #LETTER : ["a"-"z","A"-"Z"] >
+}
+TOKEN:
+{
+  < #DIGIT: ["0"-"9"] >
+}
+TOKEN:
+{
+  < START_TOKEN : "Fetch" | "fetch" | "FETCH" | "Get" | "get" | "GET" | "Select" | "select" | "SELECT" >
+}
+TOKEN:{  < FUNCTION : 	"Average" | "AVERAGE" | "average" | "AVG" | "avg" | "mean" | "MEAN" | "Mean" | "Most Recent" | "most recent" |
+  		"MOST RECENT" | "Median" | "median" | "MEDIAN" | "Mode" | "MODE" | "mode" >
+}
+TOKEN:
+{  < WORD : (<LETTER>){1} (<LETTER>)* >
+}
+TOKEN:{  < #OVER: "over last" | "Over Last" | "Over last" | "OVER LAST" >
+}
+TOKEN:
+{  < #TIME_UNIT: "second" | "Second" | "SECOND" | "seconds" | "Seconds" | "SECONDS" |
+  		"minute" | "Minute" | "MINUTE" | "minutes" | "Minutes" | "MINUTES" |
+  		"hour" | "Hour" | "HOUR" | "hours" | "Hours" | "HOURS" |
+  		"day" | "Day" | "DAY" | "days" | "Days" | "DAYS" |
+  		"month" | "Month" | "MONTH" | "months" | "Months" | "MONTHS" |
+  		"year" | "Year" | "YEAR" | "years" | "Years" | "YEARS" >
+}
+TOKEN:{  < TIME: < OVER > <SPACE > (<DIGIT>){1} (<DIGIT>)* < SPACE > <TIME_UNIT > >
+}
+TOKEN:
+{  < #FROM_IDENTIFIER: "from" | "From" | "FROM" | "From Device" | "From device" | "from device" | "FROM DEVICE" >
+}
+TOKEN:
+{  < FROM: < FROM_IDENTIFIER > <SPACE > <WORD > >
+}
+
+
+void Start() :
+{}
+{
+	<START_TOKEN>
+	<SPACE>
+	< FUNCTION >
+	< SPACE >
+	< WORD >
+	(	  < TIME >
+	)?
+	(	  < SPACE >
+	)?
+	(	  < FROM >
+	)?
+}

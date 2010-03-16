@@ -14,6 +14,11 @@ public class CompositeCondition extends Condition {
 		this.conditions = conditions;
 	}
 	
+	public CompositeCondition()
+	{
+		
+	}
+	
 	@JsonProperty(value="conditions")
 	private List<Condition> conditions = new ArrayList<Condition>();
 	

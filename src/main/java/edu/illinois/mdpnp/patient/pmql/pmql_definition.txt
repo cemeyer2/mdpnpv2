@@ -1,0 +1,9 @@
+Examples of query language
+
+Fetch average heartrate over last 5 minutes
+Get average heartrate over last 5 seconds
+Select average heartrate over last 1 hour
+Fetch median heartrate over last 5 minutes
+Fetch mode heartrate over last 5 minutes
+Fetch most recent heartrate
+Fetch average heartrate over last 5 minutes from device deviceId
